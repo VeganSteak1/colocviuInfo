@@ -9,15 +9,11 @@ class masina {
     int vitezaMaxima;
 protected:
     int greutate;
-    float autonom = autonomie();
 public:
     const std::string &getNume() const {
         return nume;
     }
 
-    float getAutonom() const {
-        return autonom;
-    }
 
     masina(int an, const std::string &nume, int vitezaMaxima, int greutate) : an(an), nume(nume),
                                                                               vitezaMaxima(vitezaMaxima),
@@ -195,6 +191,13 @@ int main() {
         }
     } while (x!=6);
     std::cout<<*cars[0]<<std::endl;
+    for(int i=0; i<cars.size(); i++){
+        std::shared_ptr<electrica> u = std::dynamic_pointer_cast<electrica>(cars[i]);
+        if(u)
+            std::cout<<*u;
+        else
+            std::cout<<"FOSILA IMPUTITA\n";
+    }
     std::cout<<cars[0]->autonomie();
 //    electrica tesla(2019,"Tesla",250,1700,40000);
 //    cars.push_back(tesla);
